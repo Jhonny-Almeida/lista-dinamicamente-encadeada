@@ -188,56 +188,51 @@ int verifOrdenada(Lista *L)
 
 int copiarLista(Lista *L, Lista *destino)
 {
-	// Inicializa a lista destino como vazia
 	definir(destino);
 
-	// Verifica se a lista de origem está vazia
 	if (vazia(L))
 	{
-		return 1; // Lista de origem vazia, nada a copiar
+		return 1; 
 	}
 
-	No *p = L->head; // Ponteiro para percorrer a lista original
-	tipo_elem elem;	 // Elemento temporário para armazenar a chave
+	No *p = L->head; 
+	tipo_elem elem;	 
 
-	// Percorre a lista de origem e insere cada elemento na lista destino
 	while (p != NULL)
 	{
-		elem.chave = p->info.chave; // Copia a chave do nó atual
+		elem.chave = p->info.chave; 
 		if (!inserirFinal(destino, elem))
 		{
-			return 0; // Erro ao alocar memória ou inserir
+			return 0; 
 		}
-		p = p->prox; // Avança para o próximo nó
+		p = p->prox; 
 	}
-	return 1; // Copia bem-sucedida
+	return 1; 
 }
 
 int copiarListaUnica(Lista *L, Lista *destino)
 {
-	// Inicializa a lista destino como vazia
 	definir(destino);
 
-	// Verifica se a lista de origem está vazia
 	if (vazia(L))
 	{
-		return 1; // Lista de origem vazia, nada a copiar
+		return 1; 
 	}
 
-	No *p = L->head; // Ponteiro para percorrer a lista original
-	tipo_elem elem;	 // Elemento temporário para armazenar a chave
+	No *p = L->head; 
+	tipo_elem elem;	 
 
-	// Percorre a lista de origem e insere cada elemento na lista destino
+	
 	while (p != NULL)
 	{
-		elem.chave = p->info.chave; // Copia a chave do nó atual
+		elem.chave = p->info.chave; 
 		if (!inserirFinal(destino, elem))
 		{
-			return 0; // Erro ao alocar memória ou inserir
+			return 0;
 		}
-		p = p->prox; // Avança para o próximo nó
+		p = p->prox; 
 	}
-	return 1; // Copia bem-sucedida
+	return 1; 
 }
 
 int copiarListaInvertida(Lista *L, Lista *destino)
