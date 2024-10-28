@@ -132,15 +132,15 @@ void exibir(Lista *L)
 	}
 }
 
-/*int Tamanho_rec (No *p){
+/*int tamanho_rec (No *p){
 	if(p==NULL)
-		return 0:
+		return 0;
 }
 
-int Tamanho(Lista *L){
+int tamanho(Lista *L){
 	return(tamanho_rec(L->head));
-}
-*/
+}*/
+
 int tamanho(Lista *L)
 {
 	int cont;
@@ -168,7 +168,7 @@ int buscarLista(Lista *L, int chave)
 
 int verifOrdenada(Lista *L)
 {
-	//No *p;
+	// No *p;
 
 	if (vazia(L) || L->head->prox == NULL)
 		return 1;
@@ -187,18 +187,19 @@ int verifOrdenada(Lista *L)
 }
 
 int copiarLista(Lista *L, Lista *lista2) {
-    // Inicializa a lista lista2 como vazia
+    // Inicializa a lista destino como vazia
     definir(lista2);
 
-    // Verifica se a lista de origem está vazia
-    if (vazia(L)) {
-        return 1;  // Lista de origem vazia, nada a copiar
-    }
+	// Verifica se a lista de origem está vazia
+	if (vazia(L))
+	{
+		return 1; // Lista de origem vazia, nada a copiar
+	}
 
-    No *p = L->head;  // Ponteiro para percorrer a lista original
-    tipo_elem elem;         // Elemento temporário para armazenar a chave
+	No *p = L->head; // Ponteiro para percorrer a lista original
+	tipo_elem elem;	 // Elemento temporário para armazenar a chave
 
-    // Percorre a lista de origem e insere cada elemento na lista lista2
+    // Percorre a lista de origem e insere cada elemento na lista destino
     while (p != NULL) {
         elem.chave = p->info.chave;  // Copia a chave do nó atual
         if (!inserirFinal(lista2, elem)) {
@@ -210,19 +211,19 @@ int copiarLista(Lista *L, Lista *lista2) {
 }
 
 int copiarListaUnica(Lista *L, Lista *lista2) {
-    definir(lista2);  // Inicializa a lista lista2 como vazia
+    definir(lista2);  // Inicializa a lista destino como vazia
 
     if (vazia(L)) {
         return 1;  // Lista de origem vazia
     }
 
-    No *p = L->head;
-    tipo_elem elem;
+	No *p = L->head;
+	tipo_elem elem;
 
     while (p != NULL) {
         elem.chave = p->info.chave;
 
-        // Insere apenas se o elemento não estiver na lista lista2
+        // Insere apenas se o elemento não estiver na lista destino
         if (!buscarLista(lista2, elem.chave)) {
             if (!inserirFinal(lista2, elem)) {
                 return 0;  // Erro ao alocar memória
@@ -272,16 +273,18 @@ int intercalaLista1Lista2(Lista *L, Lista *lista2, Lista *lista3)
 	return 1;
 }
 
-void pausar() { // nao aguento mais
-    printf("\nPressione Enter para continuar...");
-    getchar();  // Lê o caractere '\n' deixado pelo scanf
-    getchar();  // Espera o usuário pressionar Enter
+void pausar()
+{ // nao aguento mais
+	printf("\nPressione Enter para continuar...");
+	getchar();
+	getchar();
 }
 
-void limparTela() {
+void limparTela()
+{
 #ifdef _WIN32
-    system("cls");  // Comando para Windows
+	system("cls"); // Comando para Windows
 #else
-    system("clear");  // Comando para Linux/Mac
+	system("clear"); // Comando para Linux
 #endif
 }

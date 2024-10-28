@@ -44,5 +44,7 @@ int busc_seq_ord(Lista *L, int chave);
 int verifOrdenada(Lista *L);
 int copiarLista(Lista *L, Lista *lista2);
 int copiarListaUnica(Lista *L, Lista *lista2);
-int intercalaLista1Lista2(Lista *L, Lista *lista2, Lista *lista3);
+
+void pausar();
+void limparTela();
 
