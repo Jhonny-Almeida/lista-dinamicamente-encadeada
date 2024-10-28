@@ -41,5 +41,5 @@ int vazia(Lista*L);
 int Busca_Bi(Lista *L, int chave);
 int busc_seq_ord(Lista *L, int chave);
 
-
+void verfOrdenada(Lista *L);
 
