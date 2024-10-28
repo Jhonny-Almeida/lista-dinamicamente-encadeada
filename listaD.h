@@ -42,4 +42,7 @@ int Busca_Bi(Lista *L, int chave);
 int busc_seq_ord(Lista *L, int chave);
 
 int verifOrdenada(Lista *L);
+int copiarLista(Lista *L, Lista *destino);
+int copiarListaUnica(Lista *L, Lista *destino);
+
 

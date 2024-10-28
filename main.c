@@ -5,6 +5,8 @@
 
 int main()
 {
+
+    setlocale(LC_ALL, "portuguese-brazilian");
     Lista L, lista_copia;
     tipo_elem v;
     int chave;
@@ -27,7 +29,7 @@ int main()
         printf("10 - Ver tamanho da lista\n");
         printf("11 - Buscar chave\n");
         printf("12 - Verificar se a lista está ordenada\n");
-        printf("13 - Copiar lista\n");
+        printf("13 - Copiar lista (eliminando ou não repetidos)\n");
         printf("0 - Sair\n");
 
         scanf("%d", &op);
@@ -96,14 +98,32 @@ int main()
             }
             break;
         case 13:
-            if (copiarLista(&L, &lista_copia))
+            printf("Deseja eliminar os elementos repetidos? (1-Sim, 0-Não): ");
+            scanf("%d", &op);
+
+            if (op == 1)
             {
-                printf("Lista copiada com sucesso!\n");
-                exibir(&lista_copia); // Exibe a lista copiada
+                if (copiarListaUnica(&L, &lista_copia))
+                {
+                    printf("Lista copiada sem repetidos:\n");
+                    exibir(&lista_copia);
+                }
+                else
+                {
+                    printf("Erro ao copiar a lista.\n");
+                }
             }
             else
             {
-                printf("Não foi possível copiar a lista\n");
+                if (copiarLista(&L, &lista_copia))
+                {
+                    printf("Lista copiada com todos os elementos:\n");
+                    exibir(&lista_copia);
+                }
+                else
+                {
+                    printf("Erro ao copiar a lista.\n");
+                }
             }
         }
     } while (op != 0);

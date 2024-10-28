@@ -58,6 +58,7 @@ dkms.conf
 *.exe
 *.depend
 *.layout
+launch.json
 /build
 /output
 /.objs

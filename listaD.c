@@ -208,3 +208,27 @@ int copiarLista(Lista *L, Lista *destino) {
     }
     return 1;  // Copia bem-sucedida
 }
+
+int copiarListaUnica(Lista *L, Lista *destino) {
+    definir(destino);  // Inicializa a lista destino como vazia
+
+    if (vazia(L)) {
+        return 1;  // Lista de origem vazia
+    }
+
+    No *p = L->head;
+    tipo_elem elem;
+
+    while (p != NULL) {
+        elem.chave = p->info.chave;
+
+        // Insere apenas se o elemento não estiver na lista destino
+        if (!buscarLista(destino, elem.chave)) {
+            if (!inserirFinal(destino, elem)) {
+                return 0;  // Erro ao alocar memória
+            }
+        }
+        p = p->prox;
+    }
+    return 1;  // Copia bem-sucedida
+}
