@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listaD.c"
 #include <locale.h>
+#include "listaD.c"
 
 int main()
 {
 
-    setlocale(LC_ALL, "portuguese-brazilian");
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     Lista L, lista_copia;
     tipo_elem v;
     int chave;
@@ -15,6 +15,7 @@ int main()
 
     do
     {
+        limparTela();;
 
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
@@ -36,58 +37,81 @@ int main()
         switch (op)
         {
         case 1:
+
             if (vazia(&L))
                 printf("Lista vazia\n");
             else
                 printf("Lista não está vazia\n");
+            pausar();
             break;
+
         case 2:
+            //limparTela();;
             destruir(&L);
+            pausar();
             break;
         case 3:
+            //limparTela();;
             exibir(&L);
+            pausar();
             break;
 
         case 4:
+            //limparTela();;
             printf("Digite a chave para inserir no início: ");
             scanf("%d", &v.chave);
             inserirInicio(&L, v);
+            pausar();
             break;
 
         case 5:
+            //limparTela();;
             printf("Digite a chave para inserir no final: ");
             scanf("%d", &v.chave);
             inserirFinal(&L, v);
+            pausar();
             break;
 
         case 6:
+            //limparTela();;
             printf("Digite a chave para inserir de forma ordenada: ");
             scanf("%d", &v.chave);
             inserirOrdenada(&L, v);
+            pausar();
             break;
 
         case 7:
+            //limparTela();;
             removerInicio(&L);
+            pausar();
             break;
 
         case 8:
+            //limparTela();;
             removerFinal(&L);
+            pausar();
             break;
 
         case 9:
+            //limparTela();;
             printf("Digite a chave para remover: ");
             scanf("%d", &chave);
             removerElemento(&L, chave);
+            pausar();
             break;
         case 10:
+            //limparTela();;
             tamanho(&L);
+            pausar();
             break;
         case 11:
             printf("digite a chave: ");
             scanf("%d", &chave);
             buscarLista(&L, chave);
+            pausar();
             break;
         case 12:
+            //limparTela();;
             if (verifOrdenada(&L))
             {
                 printf("A lista está ordenada \n");
@@ -96,8 +120,10 @@ int main()
             {
                 printf("A lista não está ordenada\n");
             }
+            pausar();
             break;
         case 13:
+            //limparTela();;
             printf("Deseja eliminar os elementos repetidos? (1-Sim, 0-Não): ");
             scanf("%d", &op);
 
@@ -125,6 +151,8 @@ int main()
                     printf("Erro ao copiar a lista.\n");
                 }
             }
+            pausar();
+            break;
         }
     } while (op != 0);
 
