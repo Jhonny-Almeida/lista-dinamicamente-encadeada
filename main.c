@@ -3,14 +3,16 @@
 #include "listaD.c"
 #include <locale.h>
 
-int main(){
-    Lista L;
+int main()
+{
+    Lista L, lista_copia;
     tipo_elem v;
     int chave;
     int op;
     definir(&L);
 
-    do {
+    do
+    {
 
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
@@ -24,70 +26,87 @@ int main(){
         printf("9 - Remover elemento pela chave\n");
         printf("10 - Ver tamanho da lista\n");
         printf("11 - Buscar chave\n");
+        printf("12 - Verificar se a lista está ordenada\n");
+        printf("13 - Copiar lista\n");
         printf("0 - Sair\n");
 
         scanf("%d", &op);
-        switch (op) {
-            case 1:
-                if (vazia(&L))
-                    printf("Lista vazia\n");
-                else
-                    printf("Lista não está vazia\n");
+        switch (op)
+        {
+        case 1:
+            if (vazia(&L))
+                printf("Lista vazia\n");
+            else
+                printf("Lista não está vazia\n");
             break;
-            case 2:
-                destruir(&L);
+        case 2:
+            destruir(&L);
             break;
-            case 3:
-                exibir(&L);
-                break;
+        case 3:
+            exibir(&L);
+            break;
 
-            case 4:
-                printf("Digite a chave para inserir no início: ");
-                scanf("%d", &v.chave);
-                inserirInicio(&L, v);
-                break;
+        case 4:
+            printf("Digite a chave para inserir no início: ");
+            scanf("%d", &v.chave);
+            inserirInicio(&L, v);
+            break;
 
-            case 5:
-                printf("Digite a chave para inserir no final: ");
-                scanf("%d", &v.chave);
-                inserirFinal(&L, v);
-                break;
+        case 5:
+            printf("Digite a chave para inserir no final: ");
+            scanf("%d", &v.chave);
+            inserirFinal(&L, v);
+            break;
 
-            case 6:
-                printf("Digite a chave para inserir de forma ordenada: ");
-                scanf("%d", &v.chave);
-                inserirOrdenada(&L, v);
-                break;
+        case 6:
+            printf("Digite a chave para inserir de forma ordenada: ");
+            scanf("%d", &v.chave);
+            inserirOrdenada(&L, v);
+            break;
 
-            case 7:
-                removerInicio(&L);
-                break;
+        case 7:
+            removerInicio(&L);
+            break;
 
-            case 8:
-                removerFinal(&L);
-                break;
+        case 8:
+            removerFinal(&L);
+            break;
 
-            case 9:
-                printf("Digite a chave para remover: ");
-                scanf("%d", &chave);
-                removerElemento(&L, chave);
-                break;
-            case 10:
-                tamanho(&L);
-                break;
-            case 11:
-                printf("digite a chave: ");
-                scanf("%d", &chave);
-                buscarLista(&L, chave);
-                break;
-            case 12:
-            if(verifOrdenada(&L)){
+        case 9:
+            printf("Digite a chave para remover: ");
+            scanf("%d", &chave);
+            removerElemento(&L, chave);
+            break;
+        case 10:
+            tamanho(&L);
+            break;
+        case 11:
+            printf("digite a chave: ");
+            scanf("%d", &chave);
+            buscarLista(&L, chave);
+            break;
+        case 12:
+            if (verifOrdenada(&L))
+            {
                 printf("A lista está ordenada \n");
-            }else{
-                printf("A lista não está ordenada\n")
+            }
+            else
+            {
+                printf("A lista não está ordenada\n");
+            }
+            break;
+        case 13:
+            if (copiarLista(&L, &lista_copia))
+            {
+                printf("Lista copiada com sucesso!\n");
+                exibir(&lista_copia); // Exibe a lista copiada
+            }
+            else
+            {
+                printf("Não foi possível copiar a lista\n");
             }
         }
-}while(op !=0);
+    } while (op != 0);
 
-return 0;
+    return 0;
 }

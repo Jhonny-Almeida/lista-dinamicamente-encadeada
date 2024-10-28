@@ -186,3 +186,25 @@ int verifOrdenada(Lista *L)
 	return 1;
 }
 
+int copiarLista(Lista *L, Lista *destino) {
+    // Inicializa a lista destino como vazia
+    definir(destino);
+
+    // Verifica se a lista de origem está vazia
+    if (vazia(L)) {
+        return 1;  // Lista de origem vazia, nada a copiar
+    }
+
+    No *p = L->head;  // Ponteiro para percorrer a lista original
+    tipo_elem elem;         // Elemento temporário para armazenar a chave
+
+    // Percorre a lista de origem e insere cada elemento na lista destino
+    while (p != NULL) {
+        elem.chave = p->info.chave;  // Copia a chave do nó atual
+        if (!inserirFinal(destino, elem)) {
+            return 0;  // Erro ao alocar memória ou inserir
+        }
+        p = p->prox;  // Avança para o próximo nó
+    }
+    return 1;  // Copia bem-sucedida
+}
