@@ -132,15 +132,16 @@ void exibir(Lista *L)
 	}
 }
 
-/*int Tamanho_rec (No *p){
+/*int tamanho_rec (No *p){
 	if(p==NULL)
-		return 0:
+		return 0;
 }
 
-int Tamanho(Lista *L){
+int tamanho(Lista *L){
 	return(tamanho_rec(L->head));
-}
-*/
+}*/
+
+
 int tamanho(Lista *L)
 {
 	int cont;

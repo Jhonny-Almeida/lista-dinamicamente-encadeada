@@ -100,8 +100,9 @@ int main()
             pausar();
             break;
         case 10:
-            //limparTela();;
-            tamanho(&L);
+            //limparTela();
+            printf("Tamanho da lista: %d\n", tamanho(&L));
+            //tamanho(&L);
             pausar();
             break;
         case 11:
