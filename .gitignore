@@ -60,3 +60,6 @@ dkms.conf
 *.layout
 /build
 /output
+/.objs
+/.vscode
+
