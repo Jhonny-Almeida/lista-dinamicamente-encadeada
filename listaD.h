@@ -45,4 +45,6 @@ int verifOrdenada(Lista *L);
 int copiarLista(Lista *L, Lista *destino);
 int copiarListaUnica(Lista *L, Lista *destino);
 
+void pausar();
+void limparTela();
 

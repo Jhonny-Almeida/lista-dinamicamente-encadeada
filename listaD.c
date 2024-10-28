@@ -232,3 +232,17 @@ int copiarListaUnica(Lista *L, Lista *destino) {
     }
     return 1;  // Copia bem-sucedida
 }
+
+void pausar() { // nao aguento mais
+    printf("\nPressione Enter para continuar...");
+    getchar();  // Lê o caractere '\n' deixado pelo scanf
+    getchar();  // Espera o usuário pressionar Enter
+}
+
+void limparTela() {
+#ifdef _WIN32
+    system("cls");  // Comando para Windows
+#else
+    system("clear");  // Comando para Linux/Mac
+#endif
+}
