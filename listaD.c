@@ -186,9 +186,9 @@ int verifOrdenada(Lista *L)
 	return 1;
 }
 
-int copiarLista(Lista *L, Lista *destino)
-{
-	definir(destino);
+int copiarLista(Lista *L, Lista *lista2) {
+    // Inicializa a lista destino como vazia
+    definir(lista2);
 
 	if (vazia(L))
 	{
@@ -198,63 +198,76 @@ int copiarLista(Lista *L, Lista *destino)
 	No *p = L->head; 
 	tipo_elem elem;	 
 
-	while (p != NULL)
-	{
-		elem.chave = p->info.chave; 
-		if (!inserirFinal(destino, elem))
-		{
-			return 0; 
-		}
-		p = p->prox; 
-	}
-	return 1; 
+    // Percorre a lista de origem e insere cada elemento na lista destino
+    while (p != NULL) {
+        elem.chave = p->info.chave;  // Copia a chave do nó atual
+        if (!inserirFinal(lista2, elem)) {
+            return 0;  // Erro ao alocar memória ou inserir
+        }
+        p = p->prox;  // Avança para o próximo nó
+    }
+    return 1;  // Copia bem-sucedida
 }
 
-int copiarListaUnica(Lista *L, Lista *destino)
-{
-	definir(destino);
+int copiarListaUnica(Lista *L, Lista *lista2) {
+    definir(lista2);  // Inicializa a lista destino como vazia
 
-	if (vazia(L))
-	{
-		return 1; 
-	}
-
-	No *p = L->head; 
-	tipo_elem elem;	 
-
-	
-	while (p != NULL)
-	{
-		elem.chave = p->info.chave; 
-		if (!inserirFinal(destino, elem))
-		{
-			return 0;
-		}
-		p = p->prox; 
-	}
-	return 1; 
-}
-
-int copiarListaInvertida(Lista *L, Lista *destino)
-{
-	definir(destino);
-
-	if (vazia(L))
-	{
-		return 1;
-	}
+    if (vazia(L)) {
+        return 1;  // Lista de origem vazia
+    }
 
 	No *p = L->head;
 	tipo_elem elem;
 
-	while (p != NULL)
+    while (p != NULL) {
+        elem.chave = p->info.chave;
+
+        // Insere apenas se o elemento não estiver na lista destino
+        if (!buscarLista(lista2, elem.chave)) {
+            if (!inserirFinal(lista2, elem)) {
+                return 0;  // Erro ao alocar memória
+            }
+        }
+        p = p->prox;
+    }
+    return 1;  // Copia bem-sucedida
+}
+int intercalaLista1Lista2(Lista *L, Lista *lista2, Lista *lista3)
+{	
+	definir(lista3);
+
+	if(vazia(L)|| vazia(lista2))
+		return 0;
+
+	if(!verifOrdenada(L) || !verifOrdenada(lista2))
+		return 0;
+	No *p = L->head;
+	No *q = lista2->head;
+	
+	while(p != NULL && q != NULL)
 	{
-		elem.chave = p->info.chave;
-		if (!inserirInicio(destino, elem))
+		if(p->info.chave <= q->info.chave) //condfere se p é menor ou == q
 		{
-			return 0;
+			inserirFinal(lista3, p->info); // caso true valor de p é inserido em lista3
+			p = p->prox; // move para proximo nó
+		}else
+		{
+			inserirFinal(lista3, q->info); // nesse caso q é inserido 
+			q = q->prox; // move para proximo nó
 		}
+	}
+
+	// caso sobre chaves tanto na lista 1 tanto no lista2:
+
+	while(p != NULL)
+	{
+		inserirFinal(lista3, p->info);
 		p = p->prox;
+	}
+	while(q != NULL)
+	{
+		inserirFinal(lista3, q->info);
+		q = q->prox;
 	}
 	return 1;
 }

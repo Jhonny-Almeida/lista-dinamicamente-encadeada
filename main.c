@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 #include "listaD.c"
+#include <locale.h>
 
 int main()
 {
 
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-    Lista L, lista_copia;
+    setlocale(LC_ALL, "portuguese-brazilian");
+    Lista L, lista_copia, lista3;
     tipo_elem v;
     int chave;
     int op;
+    int optemp; //op temporario para essa caso 
     definir(&L);
 
     do
     {
-        limparTela();
-        ;
+        limparTela();;
 
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
@@ -33,29 +33,26 @@ int main()
         printf("12 - Verificar se a lista está ordenada\n");
         printf("13 - Copiar lista (eliminando ou não repetidos)\n");
         printf("14 - Copiar lista Invertida\n");
+        printf("15 - intercalar lista 1 e lista 2 em uma terceira (ambas tem que estar ordenadas)\n");
+
         printf("0 - Sair\n");
 
         scanf("%d", &op);
         switch (op)
         {
         case 1:
-
             if (vazia(&L))
                 printf("Lista vazia\n");
             else
                 printf("Lista não está vazia\n");
-            pausar();
             break;
-
         case 2:
             // limparTela();;
             destruir(&L);
-            pausar();
             break;
         case 3:
             // limparTela();;
             exibir(&L);
-            pausar();
             break;
 
         case 4:
@@ -63,7 +60,6 @@ int main()
             printf("Digite a chave para inserir no início: ");
             scanf("%d", &v.chave);
             inserirInicio(&L, v);
-            pausar();
             break;
 
         case 5:
@@ -71,7 +67,6 @@ int main()
             printf("Digite a chave para inserir no final: ");
             scanf("%d", &v.chave);
             inserirFinal(&L, v);
-            pausar();
             break;
 
         case 6:
@@ -79,19 +74,16 @@ int main()
             printf("Digite a chave para inserir de forma ordenada: ");
             scanf("%d", &v.chave);
             inserirOrdenada(&L, v);
-            pausar();
             break;
 
         case 7:
             // limparTela();;
             removerInicio(&L);
-            pausar();
             break;
 
         case 8:
             // limparTela();;
             removerFinal(&L);
-            pausar();
             break;
 
         case 9:
@@ -99,7 +91,6 @@ int main()
             printf("Digite a chave para remover: ");
             scanf("%d", &chave);
             removerElemento(&L, chave);
-            pausar();
             break;
         case 10:
             // limparTela();
@@ -111,7 +102,6 @@ int main()
             printf("digite a chave: ");
             scanf("%d", &chave);
             buscarLista(&L, chave);
-            pausar();
             break;
         case 12:
             // limparTela();;
@@ -123,14 +113,13 @@ int main()
             {
                 printf("A lista não está ordenada\n");
             }
-            pausar();
             break;
         case 13:
             // limparTela();;
             printf("Deseja eliminar os elementos repetidos? (1-Sim, 0-Não): ");
-            scanf("%d", &op);
+            scanf("%d", &optemp);
 
-            if (op == 1)
+            if (optemp == 1)
             {
                 if (copiarListaUnica(&L, &lista_copia))
                 {
@@ -154,8 +143,19 @@ int main()
                     printf("Erro ao copiar a lista.\n");
                 }
             }
-            pausar();
             break;
+        case 15: 
+            if (intercalaLista1Lista2(&L, &lista_copia,&lista3))
+            {
+                printf("Lista 3 criada com sucesso:\n");
+                exibir(&lista3);
+            }
+            else
+            {
+                printf("Erro ao copiar a lista.\n");
+            }
+            break;
+        
         case 14:
             if (copiarListaInvertida(&L, &lista_copia))
             {
@@ -170,6 +170,7 @@ int main()
             break;
         }
     } while (op != 0);
-
+             
+                
     return 0;
 }
