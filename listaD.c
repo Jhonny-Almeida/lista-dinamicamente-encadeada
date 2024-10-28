@@ -272,9 +272,31 @@ int intercalaLista1Lista2(Lista *L, Lista *lista2, Lista *lista3)
 	}
 	return 1;
 }
+int copiarListaInvertida(Lista *L, Lista *lista2)
+{
+	definir(lista2);
 
+	if (vazia(L))
+	{
+		return 1;
+	}
+
+	No *p = L->head;
+	tipo_elem elem;
+
+	while (p != NULL)
+	{
+		elem.chave = p->info.chave;
+		if (!inserirInicio(lista2, elem))
+		{
+			return 0;
+		}
+		p = p->prox;
+	}
+	return 1;
+}
 void pausar()
-{ // nao aguento mais
+{ 
 	printf("\nPressione Enter para continuar...");
 	getchar();
 	getchar();
