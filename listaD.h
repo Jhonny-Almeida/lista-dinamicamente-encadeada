@@ -6,7 +6,7 @@ typedef struct{
 	
 }tipo_elem;
 
-typedef struct
+typedef struct No
 {
     tipo_elem info;
     struct No *prox;
@@ -41,5 +41,5 @@ int vazia(Lista*L);
 int Busca_Bi(Lista *L, int chave);
 int busc_seq_ord(Lista *L, int chave);
 
-void verfOrdenada(Lista *L);
+int verifOrdenada(Lista *L);
 

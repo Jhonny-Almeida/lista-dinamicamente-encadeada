@@ -166,9 +166,9 @@ int buscarLista(Lista *L, int chave)
 	return 1;
 }
 
-void verfOrdenada(Lista *L)
+int verifOrdenada(Lista *L)
 {
-	No *p;
+	//No *p;
 
 	if (vazia(L) || L->head->prox == NULL)
 		return 1;

@@ -12,10 +12,10 @@ int main(){
 
     do {
 
-        printf("Lista\n\n");
+        printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
-        printf("3 - Exibir lista\n");
         printf("2 - Destruir lista\n");
+        printf("3 - Exibir lista\n");
         printf("4 - Inserir no início\n");
         printf("5 - Inserir no final\n");
         printf("6 - Inserir de forma ordenada\n");
@@ -80,6 +80,12 @@ int main(){
                 scanf("%d", &chave);
                 buscarLista(&L, chave);
                 break;
+            case 12:
+            if(verifOrdenada(&L)){
+                printf("A lista está ordenada \n");
+            }else{
+                printf("A lista não está ordenada\n")
+            }
         }
 }while(op !=0);
 
