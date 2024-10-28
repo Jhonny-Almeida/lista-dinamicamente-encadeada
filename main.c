@@ -16,7 +16,7 @@ int main()
 
     do
     {
-        limparTela();;
+        limparTela();
 
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
