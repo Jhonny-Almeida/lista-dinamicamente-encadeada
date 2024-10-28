@@ -7,10 +7,11 @@ int main()
 {
 
     setlocale(LC_ALL, "portuguese-brazilian");
-    Lista L, lista_copia;
+    Lista L, lista_copia, lista3;
     tipo_elem v;
     int chave;
     int op;
+    int optemp; //op temporario para essa caso 
     definir(&L);
 
     do
@@ -30,6 +31,7 @@ int main()
         printf("11 - Buscar chave\n");
         printf("12 - Verificar se a lista está ordenada\n");
         printf("13 - Copiar lista (eliminando ou não repetidos)\n");
+        printf("14 - intercalar lista 1 e lista 2 em uma terceira (ambas tem que estar ordenadas)\n");
         printf("0 - Sair\n");
 
         scanf("%d", &op);
@@ -98,10 +100,11 @@ int main()
             }
             break;
         case 13:
+            
             printf("Deseja eliminar os elementos repetidos? (1-Sim, 0-Não): ");
-            scanf("%d", &op);
+            scanf("%d", &optemp);
 
-            if (op == 1)
+            if (optemp == 1)
             {
                 if (copiarListaUnica(&L, &lista_copia))
                 {
@@ -125,8 +128,23 @@ int main()
                     printf("Erro ao copiar a lista.\n");
                 }
             }
+            break;
+        case 14: 
+            if (intercalaLista1Lista2(&L, &lista_copia,&lista3))
+            {
+                printf("Lista 3 criada com sucesso:\n");
+                exibir(&lista3);
+            }
+            else
+            {
+                printf("Erro ao copiar a lista.\n");
+            }
+            break;
+        default:
+            break;
         }
     } while (op != 0);
-
+             
+                
     return 0;
 }
