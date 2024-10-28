@@ -141,7 +141,6 @@ int tamanho(Lista *L){
 	return(tamanho_rec(L->head));
 }*/
 
-
 int tamanho(Lista *L)
 {
 	int cont;
@@ -169,7 +168,7 @@ int buscarLista(Lista *L, int chave)
 
 int verifOrdenada(Lista *L)
 {
-	//No *p;
+	// No *p;
 
 	if (vazia(L) || L->head->prox == NULL)
 		return 1;
@@ -187,63 +186,96 @@ int verifOrdenada(Lista *L)
 	return 1;
 }
 
-int copiarLista(Lista *L, Lista *destino) {
-    // Inicializa a lista destino como vazia
-    definir(destino);
+int copiarLista(Lista *L, Lista *destino)
+{
+	// Inicializa a lista destino como vazia
+	definir(destino);
 
-    // Verifica se a lista de origem está vazia
-    if (vazia(L)) {
-        return 1;  // Lista de origem vazia, nada a copiar
-    }
+	// Verifica se a lista de origem está vazia
+	if (vazia(L))
+	{
+		return 1; // Lista de origem vazia, nada a copiar
+	}
 
-    No *p = L->head;  // Ponteiro para percorrer a lista original
-    tipo_elem elem;         // Elemento temporário para armazenar a chave
+	No *p = L->head; // Ponteiro para percorrer a lista original
+	tipo_elem elem;	 // Elemento temporário para armazenar a chave
 
-    // Percorre a lista de origem e insere cada elemento na lista destino
-    while (p != NULL) {
-        elem.chave = p->info.chave;  // Copia a chave do nó atual
-        if (!inserirFinal(destino, elem)) {
-            return 0;  // Erro ao alocar memória ou inserir
-        }
-        p = p->prox;  // Avança para o próximo nó
-    }
-    return 1;  // Copia bem-sucedida
+	// Percorre a lista de origem e insere cada elemento na lista destino
+	while (p != NULL)
+	{
+		elem.chave = p->info.chave; // Copia a chave do nó atual
+		if (!inserirFinal(destino, elem))
+		{
+			return 0; // Erro ao alocar memória ou inserir
+		}
+		p = p->prox; // Avança para o próximo nó
+	}
+	return 1; // Copia bem-sucedida
 }
 
-int copiarListaUnica(Lista *L, Lista *destino) {
-    definir(destino);  // Inicializa a lista destino como vazia
+int copiarListaUnica(Lista *L, Lista *destino)
+{
+	// Inicializa a lista destino como vazia
+	definir(destino);
 
-    if (vazia(L)) {
-        return 1;  // Lista de origem vazia
-    }
+	// Verifica se a lista de origem está vazia
+	if (vazia(L))
+	{
+		return 1; // Lista de origem vazia, nada a copiar
+	}
 
-    No *p = L->head;
-    tipo_elem elem;
+	No *p = L->head; // Ponteiro para percorrer a lista original
+	tipo_elem elem;	 // Elemento temporário para armazenar a chave
 
-    while (p != NULL) {
-        elem.chave = p->info.chave;
-
-        // Insere apenas se o elemento não estiver na lista destino
-        if (!buscarLista(destino, elem.chave)) {
-            if (!inserirFinal(destino, elem)) {
-                return 0;  // Erro ao alocar memória
-            }
-        }
-        p = p->prox;
-    }
-    return 1;  // Copia bem-sucedida
+	// Percorre a lista de origem e insere cada elemento na lista destino
+	while (p != NULL)
+	{
+		elem.chave = p->info.chave; // Copia a chave do nó atual
+		if (!inserirFinal(destino, elem))
+		{
+			return 0; // Erro ao alocar memória ou inserir
+		}
+		p = p->prox; // Avança para o próximo nó
+	}
+	return 1; // Copia bem-sucedida
 }
 
-void pausar() { // nao aguento mais
-    printf("\nPressione Enter para continuar...");
-    getchar();  // Lê o caractere '\n' deixado pelo scanf
-    getchar();  // Espera o usuário pressionar Enter
+int copiarListaInvertida(Lista *L, Lista *destino)
+{
+	definir(destino);
+
+	if (vazia(L))
+	{
+		return 1;
+	}
+
+	No *p = L->head;
+	tipo_elem elem;
+
+	while (p != NULL)
+	{
+		elem.chave = p->info.chave;
+		if (!inserirInicio(destino, elem))
+		{
+			return 0;
+		}
+		p = p->prox;
+	}
+	return 1;
 }
 
-void limparTela() {
+void pausar()
+{ // nao aguento mais
+	printf("\nPressione Enter para continuar...");
+	getchar();
+	getchar();
+}
+
+void limparTela()
+{
 #ifdef _WIN32
-    system("cls");  // Comando para Windows
+	system("cls"); // Comando para Windows
 #else
-    system("clear");  // Comando para Linux/Mac
+	system("clear"); // Comando para Linux
 #endif
 }

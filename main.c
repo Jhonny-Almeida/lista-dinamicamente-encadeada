@@ -15,7 +15,8 @@ int main()
 
     do
     {
-        limparTela();;
+        limparTela();
+        ;
 
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
@@ -31,6 +32,7 @@ int main()
         printf("11 - Buscar chave\n");
         printf("12 - Verificar se a lista está ordenada\n");
         printf("13 - Copiar lista (eliminando ou não repetidos)\n");
+        printf("14 - Copiar lista Invertida\n");
         printf("0 - Sair\n");
 
         scanf("%d", &op);
@@ -46,18 +48,18 @@ int main()
             break;
 
         case 2:
-            //limparTela();;
+            // limparTela();;
             destruir(&L);
             pausar();
             break;
         case 3:
-            //limparTela();;
+            // limparTela();;
             exibir(&L);
             pausar();
             break;
 
         case 4:
-            //limparTela();;
+            // limparTela();;
             printf("Digite a chave para inserir no início: ");
             scanf("%d", &v.chave);
             inserirInicio(&L, v);
@@ -65,7 +67,7 @@ int main()
             break;
 
         case 5:
-            //limparTela();;
+            // limparTela();;
             printf("Digite a chave para inserir no final: ");
             scanf("%d", &v.chave);
             inserirFinal(&L, v);
@@ -73,7 +75,7 @@ int main()
             break;
 
         case 6:
-            //limparTela();;
+            // limparTela();;
             printf("Digite a chave para inserir de forma ordenada: ");
             scanf("%d", &v.chave);
             inserirOrdenada(&L, v);
@@ -81,28 +83,28 @@ int main()
             break;
 
         case 7:
-            //limparTela();;
+            // limparTela();;
             removerInicio(&L);
             pausar();
             break;
 
         case 8:
-            //limparTela();;
+            // limparTela();;
             removerFinal(&L);
             pausar();
             break;
 
         case 9:
-            //limparTela();;
+            // limparTela();;
             printf("Digite a chave para remover: ");
             scanf("%d", &chave);
             removerElemento(&L, chave);
             pausar();
             break;
         case 10:
-            //limparTela();
+            // limparTela();
             printf("Tamanho da lista: %d\n", tamanho(&L));
-            //tamanho(&L);
+            // tamanho(&L);
             pausar();
             break;
         case 11:
@@ -112,7 +114,7 @@ int main()
             pausar();
             break;
         case 12:
-            //limparTela();;
+            // limparTela();;
             if (verifOrdenada(&L))
             {
                 printf("A lista está ordenada \n");
@@ -124,7 +126,7 @@ int main()
             pausar();
             break;
         case 13:
-            //limparTela();;
+            // limparTela();;
             printf("Deseja eliminar os elementos repetidos? (1-Sim, 0-Não): ");
             scanf("%d", &op);
 
@@ -151,6 +153,18 @@ int main()
                 {
                     printf("Erro ao copiar a lista.\n");
                 }
+            }
+            pausar();
+            break;
+        case 14:
+            if (copiarListaInvertida(&L, &lista_copia))
+            {
+                printf("Lista copiada sem repetidos:\n");
+                exibir(&lista_copia);
+            }
+            else
+            {
+                printf("Erro ao copiar a lista.\n");
             }
             pausar();
             break;
