@@ -60,7 +60,7 @@ int busc_seq_ord(Lista *L, int chave);
 int verifOrdenada(Lista *L);
 int copiarLista(Lista *L, Lista *lista2);
 int copiarListaUnica(Lista *L, Lista *lista2);
-int copiarListaInvertida(Lista * L, Lista * lista2);
+
 void pausar();
 void limparTela();
 int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2);
