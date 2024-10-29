@@ -20,6 +20,22 @@ typedef struct {
    
 }Lista;
 
+// estrutura de lista criada para questão F
+
+typedef struct {
+    int chave;
+    int count;
+} tipo_elem_freq;
+
+typedef struct NoFreq {
+    tipo_elem_freq info;
+    struct NoFreq *prox;
+} NoFreq;
+
+typedef struct {
+    NoFreq *head;
+} ListaFreq;
+
 
 
 
@@ -47,4 +63,7 @@ int copiarListaUnica(Lista *L, Lista *lista2);
 int copiarListaInvertida(Lista * L, Lista * lista2);
 void pausar();
 void limparTela();
-
+int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2);
+int inserirFinalFreq(ListaFreq *L, tipo_elem_freq v);
+void exibirListaFrequencia(ListaFreq *L2);
+void destruirListaFreq(ListaFreq *L);

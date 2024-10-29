@@ -310,3 +310,89 @@ void limparTela()
 	system("clear"); // Comando para Linux
 #endif
 }
+int inserirFinalFreq(ListaFreq *L, tipo_elem_freq v) {
+    NoFreq *p, *k;
+    if (L->head == NULL) {
+        p = (NoFreq *)malloc(sizeof(NoFreq));
+        if (p == NULL) return 0;
+        p->info = v;
+        p->prox = NULL;
+        L->head = p;
+        return 1;
+    }
+
+    p = L->head;
+    while (p->prox != NULL) {
+        p = p->prox;
+    }
+
+    k = (NoFreq *)malloc(sizeof(NoFreq));
+    if (k == NULL) return 0;
+    k->info = v;
+    k->prox = NULL;
+    p->prox = k;
+    return 1;
+}
+
+
+int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2) {
+    definir(L2); // Inicializa L2 como vazia
+    if (vazia(L1)) {
+        return 1; // L1 está vazia, nada a processar
+    }
+
+    No *p = L1->head; // Ponteiro para percorrer L1
+
+    while (p != NULL) {
+        NoFreq *q = L2->head;
+        int found = 0;
+
+        // Verifica se o elemento já está em L2
+        while (q != NULL) {
+            if (q->info.chave == p->info.chave) {
+                q->info.count++; // Incrementa a contagem se encontrado
+                found = 1;
+                break;
+            }
+            q = q->prox;
+        }
+
+        // Se o elemento não estiver em L2, insere com count = 1
+        if (!found) {
+            tipo_elem_freq novoElem;
+            novoElem.chave = p->info.chave;
+            novoElem.count = 1;
+            inserirFinalFreq(L2, novoElem);
+        }
+
+        p = p->prox;
+    }
+
+    return 1;
+}
+
+void exibirListaFrequencia(ListaFreq *L2) {
+    NoFreq *p = L2->head; // Ponteiro para percorrer L2
+
+    // Verifica se a lista está vazia
+    if (p == NULL) {
+        printf("A lista de frequência está vazia.\n");
+        return;
+    }
+
+    // Percorre a lista e exibe cada elemento com sua contagem
+    while (p != NULL) {
+        printf("Elemento: %d, Contagem: %d\n", p->info.chave, p->info.count);
+        p = p->prox; // Avança para o próximo nó
+    }
+}
+void destruirListaFreq(ListaFreq *L) {
+    NoFreq *p;
+
+    while (L->head != NULL) {
+        p = L->head;        // Aponta para o primeiro nó
+        L->head = L->head->prox;  // Move o ponteiro para o próximo nó
+        free(p);            // Libera o nó atual
+    }
+}
+
