@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Facudade/estrutura de dados/lista dinamica e estatica/lista dinamica",
-      "program": "d:/Facudade/estrutura de dados/lista dinamica e estatica/lista dinamica/build/Debug/outDebug",
+      "cwd": "c:/Users/Solange Almeida/OneDrive/Área de Trabalho/lista-dinamicamente-encadeada",
+      "program": "c:/Users/Solange Almeida/OneDrive/Área de Trabalho/lista-dinamicamente-encadeada/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
