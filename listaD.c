@@ -336,9 +336,9 @@ int inserirFinalFreq(ListaFreq *L, tipo_elem_freq v) {
 
 
 int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2) {
-    definir(L2); // Inicializa L2 como vazia
+    definir(L2); 
     if (vazia(L1)) {
-        return 1; // L1 está vazia, nada a processar
+        return 0; 
     }
 
     No *p = L1->head; // Ponteiro para percorrer L1
@@ -372,27 +372,26 @@ int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2) {
 }
 
 void exibirListaFrequencia(ListaFreq *L2) {
-    NoFreq *p = L2->head; // Ponteiro para percorrer L2
-
-    // Verifica se a lista está vazia
+    NoFreq *p = L2->head; 
+    
     if (p == NULL) {
         printf("A lista de frequência está vazia.\n");
         return;
     }
 
-    // Percorre a lista e exibe cada elemento com sua contagem
+    
     while (p != NULL) {
         printf("Elemento: %d, Contagem: %d\n", p->info.chave, p->info.count);
-        p = p->prox; // Avança para o próximo nó
+        p = p->prox; 
     }
 }
 void destruirListaFreq(ListaFreq *L) {
     NoFreq *p;
 
     while (L->head != NULL) {
-        p = L->head;        // Aponta para o primeiro nó
-        L->head = L->head->prox;  // Move o ponteiro para o próximo nó
-        free(p);            // Libera o nó atual
+        p = L->head;      
+        L->head = L->head->prox; 
+        free(p);           
     }
 }
 
