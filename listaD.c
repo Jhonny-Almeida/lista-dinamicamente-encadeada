@@ -127,7 +127,7 @@ void exibir(Lista *L)
 	No *p = L->head;
 	while (p != NULL)
 	{
-		printf("%d", p->info.chave);
+		printf("%d ", p->info.chave);
 		p = p->prox;
 	}
 }
@@ -403,4 +403,28 @@ void destruirListaFreq(ListaFreq *L) {
         free(p);           
     }
 }
-
+void separarParesImpares(Lista *L, Lista *par, Lista *impar) {
+    // Inicializa as listas de pares e ímpares
+    definir(par);
+    definir(impar);
+    if (vazia(L)) {
+        printf("A lista original está vazia.\n");
+        return;
+    }
+    No *p = L->head;
+    No *temp;
+    while (p != NULL) {
+        if (p->info.chave % 2 == 0) {
+            temp = p;
+            p = p->prox;
+            temp->prox = par->head;
+            par->head = temp;
+        } else {
+            // Insere o nó na lista de ímpares
+            temp = p;
+            p = p->prox;
+            temp->prox = impar->head; 
+            impar->head = temp;
+        }
+    }
+}

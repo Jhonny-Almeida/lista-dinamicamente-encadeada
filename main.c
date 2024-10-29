@@ -7,7 +7,8 @@ int main()
 {
 
     setlocale(LC_ALL, "portuguese-brazilian");
-    Lista L, lista_copia, lista3;
+    Lista L, lista_copia, lista3, lista_impares, lista_pares;
+    ListaFreq L2;
     tipo_elem v;
     int chave;
     int op;
@@ -17,7 +18,6 @@ int main()
     do
     {
         limparTela();;
-
         printf("\nLista\n\n");
         printf("1 - Verificar se a lista está vazia\n");
         printf("2 - Destruir lista\n");
@@ -34,6 +34,8 @@ int main()
         printf("13 - Copiar lista (eliminando ou não repetidos)\n");
         printf("14 - Copiar lista Invertida\n");
         printf("15 - intercalar lista 1 e lista 2 em uma terceira (ambas tem que estar ordenadas)\n");
+        printf("16 - Gerar lista de frequencia da lista 1\n");
+        printf("17 - separar a lista em impar par\n");
 
         printf("0 - Sair\n");
 
@@ -85,6 +87,7 @@ int main()
         case 7:
             // limparTela();;
             removerInicio(&L);
+            
             break;
 
         case 8:
@@ -171,21 +174,21 @@ int main()
         case 14:
             if (copiarListaInvertida(&L, &lista_copia))
             {
-                printf("Lista copiada sem repetidos:\n");
+                printf("Lista copiada sem repetidos: \n");
                 exibir(&lista_copia);
             }
             else
             {
                 printf("Erro ao copiar a lista.\n");
             }
-            
+            pausar();
             break;
         case 16:
             gerarListaDeFrequencia(&L, &L2);
             
             printf("Lista de Frequência:\n");
             exibirListaFrequencia(&L2);
-            
+            pausar();
             break;
         case 17:
             separarParesImpares(&L, &lista_pares, &lista_impares);
@@ -198,7 +201,11 @@ int main()
             break;
         }
     } while (op != 0);
-             
-                
+    destruir(&L);
+    destruir(&lista_copia);        
+    destruir(&lista3); 
+    destruir(&lista_impares); 
+    destruir(&lista_pares);
+    destruirListaFreq(&L2);                
     return 0;
 }

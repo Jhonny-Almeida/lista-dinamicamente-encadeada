@@ -67,3 +67,4 @@ int gerarListaDeFrequencia(Lista *L1, ListaFreq *L2);
 int inserirFinalFreq(ListaFreq *L, tipo_elem_freq v);
 void exibirListaFrequencia(ListaFreq *L2);
 void destruirListaFreq(ListaFreq *L);
+void separarParesImpares(Lista *L, Lista *par, Lista *impar);
