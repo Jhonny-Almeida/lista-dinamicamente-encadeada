@@ -45,6 +45,8 @@ int verifOrdenada(Lista *L);
 int copiarLista(Lista *L, Lista *lista2);
 int copiarListaUnica(Lista *L, Lista *lista2);
 int copiarListaInvertida(Lista * L, Lista * lista2);
+void separarParesImpares(Lista *L, Lista *par, Lista *impar);
+
 
 void pausar();
 void limparTela();

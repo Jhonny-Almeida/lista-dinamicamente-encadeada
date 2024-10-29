@@ -7,11 +7,11 @@ int main()
 {
 
     setlocale(LC_ALL, "portuguese-brazilian");
-    Lista L, lista_copia, lista3;
+    Lista L, lista_copia, lista3, lista_pares, lista_impares;
     tipo_elem v;
     int chave;
     int op;
-    int optemp; //op temporario para essa caso 
+    int optemp; // op temporario para essa caso
     definir(&L);
 
     do
@@ -34,6 +34,7 @@ int main()
         printf("13 - Copiar lista (eliminando ou não repetidos)\n");
         printf("14 - Copiar lista Invertida\n");
         printf("15 - intercalar lista 1 e lista 2 em uma terceira (ambas tem que estar ordenadas)\n");
+        printf("17 - Separar lista em lista de números pares e ímpares\n");
 
         printf("0 - Sair\n");
 
@@ -45,14 +46,17 @@ int main()
                 printf("Lista vazia\n");
             else
                 printf("Lista não está vazia\n");
+            pausar();
             break;
         case 2:
             // limparTela();;
             destruir(&L);
+            pausar();
             break;
         case 3:
             // limparTela();;
             exibir(&L);
+            pausar();
             break;
 
         case 4:
@@ -60,6 +64,7 @@ int main()
             printf("Digite a chave para inserir no início: ");
             scanf("%d", &v.chave);
             inserirInicio(&L, v);
+            pausar();
             break;
 
         case 5:
@@ -67,6 +72,7 @@ int main()
             printf("Digite a chave para inserir no final: ");
             scanf("%d", &v.chave);
             inserirFinal(&L, v);
+            pausar();
             break;
 
         case 6:
@@ -74,6 +80,7 @@ int main()
             printf("Digite a chave para inserir de forma ordenada: ");
             scanf("%d", &v.chave);
             inserirOrdenada(&L, v);
+            pausar();
             break;
 
         case 7:
@@ -91,6 +98,7 @@ int main()
             printf("Digite a chave para remover: ");
             scanf("%d", &chave);
             removerElemento(&L, chave);
+            pausar();
             break;
         case 10:
             // limparTela();
@@ -102,6 +110,7 @@ int main()
             printf("digite a chave: ");
             scanf("%d", &chave);
             buscarLista(&L, chave);
+            pausar();
             break;
         case 12:
             // limparTela();;
@@ -113,6 +122,7 @@ int main()
             {
                 printf("A lista não está ordenada\n");
             }
+            pausar();
             break;
         case 13:
             // limparTela();;
@@ -131,6 +141,7 @@ int main()
                     printf("Erro ao copiar a lista.\n");
                 }
             }
+
             else
             {
                 if (copiarLista(&L, &lista_copia))
@@ -143,9 +154,10 @@ int main()
                     printf("Erro ao copiar a lista.\n");
                 }
             }
+            pausar();
             break;
-        case 15: 
-            if (intercalaLista1Lista2(&L, &lista_copia,&lista3))
+        case 15:
+            if (intercalaLista1Lista2(&L, &lista_copia, &lista3))
             {
                 printf("Lista 3 criada com sucesso:\n");
                 exibir(&lista3);
@@ -154,8 +166,9 @@ int main()
             {
                 printf("Erro ao copiar a lista.\n");
             }
+            pausar();
             break;
-        
+
         case 14:
             if (copiarListaInvertida(&L, &lista_copia))
             {
@@ -168,9 +181,17 @@ int main()
             }
             pausar();
             break;
+        case 17:
+            separarParesImpares(&L, &lista_pares, &lista_impares);
+            printf("Lista de Pares:\n");
+            exibir(&lista_pares);
+
+            printf("\nLista de Impares:\n");
+            exibir(&lista_impares);
+            pausar();
+            break;
         }
     } while (op != 0);
-             
-                
+
     return 0;
 }
